@@ -29,14 +29,15 @@ public class IUserServiceImplTest {
         // PropertyConfigurator.configure(System.getProperty("logging.config", "classpath:properties/log4j.properties"));
         User user = new User();
         user.setId("1");
-        System.out.println(user.toString());
+       // System.out.println(user.toString());
 
+        System.out.println(iUserService.getAllUser());
         System.out.println("-------------");
-        // System.out.println(iUserService.select(user));
+//         System.out.println(iUserService.select(user));
         System.out.println("-------------");
-        System.out.println(iUserService.selectAll());
+//        System.out.println(iUserService.selectAll());
 
-
+/*
         for (int i = 0; i < 10; i++) {
             if (i < 9) {
                 try {
@@ -55,7 +56,7 @@ public class IUserServiceImplTest {
                 logger.info("树种完了");
             }
         }
-        logger.debug("运行时间：" + (System.currentTimeMillis() - starttime));
+        logger.debug("运行时间：" + (System.currentTimeMillis() - starttime));*/
     }
 
     @Test

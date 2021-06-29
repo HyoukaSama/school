@@ -9,7 +9,7 @@
         <result property="age" column="age"/>
         <result property="sex" column="sex"/>
         <result property="account" column="account"/>
-        <result property="passwd" column="passwd"/>
+        <result property="passwd" column="password"/>
     </resultMap>
     <select id="getUserById" parameterType="int" resultType="com.hyouka.entity.User">
         SELECT *
