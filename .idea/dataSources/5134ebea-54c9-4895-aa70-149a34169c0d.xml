@@ -918,58 +918,93 @@ SELECT|sys.sys_config
       <ObjectGrants>SELECT,INSERT,UPDATE,DELETE,CREATE,DROP,RELOAD,SHUTDOWN,PROCESS,FILE,REFERENCES,INDEX,ALTER,SHOW DATABASES,SUPER,CREATE TEMPORARY TABLES,LOCK TABLES,EXECUTE,REPLICATION SLAVE,REPLICATION CLIENT,CREATE VIEW,SHOW VIEW,CREATE ROUTINE,ALTER ROUTINE,CREATE USER,EVENT,TRIGGER,CREATE TABLESPACE,CREATE ROLE,DROP ROLE!
 </ObjectGrants>
     </user>
-    <table id="287" parent="6" name="user"/>
-    <column id="288" parent="287" name="id">
+    <table id="287" parent="6" name="role"/>
+    <table id="288" parent="6" name="user"/>
+    <table id="289" parent="6" name="userrole"/>
+    <column id="290" parent="287" name="id">
       <Position>1</Position>
       <DataType>varchar(32)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="289" parent="287" name="name">
+    <column id="291" parent="287" name="name">
       <Position>2</Position>
-      <DataType>varchar(50)|0s</DataType>
-    </column>
-    <column id="290" parent="287" name="age">
-      <Position>3</Position>
-      <DataType>int|0s</DataType>
-    </column>
-    <column id="291" parent="287" name="sex">
-      <Position>4</Position>
-      <DataType>varchar(10)|0s</DataType>
-    </column>
-    <column id="292" parent="287" name="account">
-      <Position>5</Position>
-      <DataType>varchar(50)|0s</DataType>
-    </column>
-    <column id="293" parent="287" name="password">
-      <Position>6</Position>
-      <DataType>varchar(50)|0s</DataType>
-    </column>
-    <column id="294" parent="287" name="createtime">
-      <Position>7</Position>
       <DataType>varchar(20)|0s</DataType>
     </column>
-    <index id="295" parent="287" name="user_id_uindex">
+    <index id="292" parent="287" name="role_id_uindex">
       <ColNames>id</ColNames>
       <Unique>1</Unique>
       <Type>btree</Type>
     </index>
-    <index id="296" parent="287" name="user_account_uindex">
-      <ColNames>account</ColNames>
-      <Unique>1</Unique>
-      <Type>btree</Type>
-    </index>
-    <key id="297" parent="287" name="PRIMARY">
+    <key id="293" parent="287" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <key id="298" parent="287" name="user_id_uindex">
+    <key id="294" parent="287" name="role_id_uindex">
+      <ColNames>id</ColNames>
+      <UnderlyingIndexName>role_id_uindex</UnderlyingIndexName>
+    </key>
+    <column id="295" parent="288" name="id">
+      <Position>1</Position>
+      <DataType>varchar(32)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="296" parent="288" name="name">
+      <Position>2</Position>
+      <DataType>varchar(50)|0s</DataType>
+    </column>
+    <column id="297" parent="288" name="age">
+      <Position>3</Position>
+      <DataType>int|0s</DataType>
+    </column>
+    <column id="298" parent="288" name="sex">
+      <Position>4</Position>
+      <DataType>varchar(10)|0s</DataType>
+    </column>
+    <column id="299" parent="288" name="account">
+      <Position>5</Position>
+      <DataType>varchar(50)|0s</DataType>
+    </column>
+    <column id="300" parent="288" name="password">
+      <Position>6</Position>
+      <DataType>varchar(50)|0s</DataType>
+    </column>
+    <column id="301" parent="288" name="createtime">
+      <Position>7</Position>
+      <DataType>varchar(20)|0s</DataType>
+    </column>
+    <index id="302" parent="288" name="user_id_uindex">
+      <ColNames>id</ColNames>
+      <Unique>1</Unique>
+      <Type>btree</Type>
+    </index>
+    <index id="303" parent="288" name="user_account_uindex">
+      <ColNames>account</ColNames>
+      <Unique>1</Unique>
+      <Type>btree</Type>
+    </index>
+    <key id="304" parent="288" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <key id="305" parent="288" name="user_id_uindex">
       <ColNames>id</ColNames>
       <UnderlyingIndexName>user_id_uindex</UnderlyingIndexName>
     </key>
-    <key id="299" parent="287" name="user_account_uindex">
+    <key id="306" parent="288" name="user_account_uindex">
       <ColNames>account</ColNames>
       <UnderlyingIndexName>user_account_uindex</UnderlyingIndexName>
     </key>
+    <column id="307" parent="289" name="userid">
+      <Position>1</Position>
+      <DataType>varchar(32)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="308" parent="289" name="roleid">
+      <Position>2</Position>
+      <DataType>varchar(32)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
   </database-model>
 </dataSource>

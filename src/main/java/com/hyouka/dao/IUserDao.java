@@ -9,5 +9,5 @@ import java.util.List;
 public interface IUserDao extends BaseDao<User> {
     List<User> getAllUser();
 
-
+    List<User> getUserDuty();
 }

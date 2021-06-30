@@ -15,9 +15,9 @@ import java.util.Random;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {"classpath:xml/applicationContext.xml"})
 
-public class IUserServiceImplTest {
+public class IUserServiceTest {
 
-    private static Logger logger = LoggerFactory.getLogger(IUserServiceImplTest.class);
+    private static Logger logger = LoggerFactory.getLogger(IUserServiceTest.class);
 
 
     @Autowired
@@ -29,11 +29,11 @@ public class IUserServiceImplTest {
         // PropertyConfigurator.configure(System.getProperty("logging.config", "classpath:properties/log4j.properties"));
         User user = new User();
         user.setId("1");
-       // System.out.println(user.toString());
+        // System.out.println(user.toString());
 
         System.out.println(iUserService.getAllUser());
         System.out.println("-------------");
-//         System.out.println(iUserService.select(user));
+        System.out.println(iUserService.select(user));
         System.out.println("-------------");
 //        System.out.println(iUserService.selectAll());
 
@@ -69,14 +69,19 @@ public class IUserServiceImplTest {
 
 
     @Test
-    public  void TestUpdate(){
-        User user =new User();
+    public void TestUpdate() {
+        User user = new User();
         user.setId("1ba8f1f22a3344aeaa605d311b70c1c5");
         user.setName("tttttttttttttttttttttt");
 
         System.out.println(iUserService.updateById(user));
 
 
+    }
+
+    @Test
+    public void TestUserDuty() {
+        System.out.println(iUserService.getUserDuty());
     }
 
 

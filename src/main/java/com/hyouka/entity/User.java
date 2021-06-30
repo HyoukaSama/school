@@ -6,6 +6,7 @@ import net.sf.json.JSONObject;
 import tk.mybatis.mapper.annotation.KeySql;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Table(name = "user")
 public class User {
@@ -31,10 +32,13 @@ public class User {
     @Column(name = "createtime")
     private String createtime;
 
+    private List<Role> roleList;
+
     public User() {
     }
 
-    public User( String name, Integer age, String sex, String account, String passwd, String createtime) {
+
+    public User(String name, Integer age, String sex, String account, String passwd, String createtime) {
         this.name = name;
         this.age = age;
         this.sex = sex;
@@ -43,7 +47,13 @@ public class User {
         this.createtime = createtime;
     }
 
+    public List<Role> getRoleList() {
+        return roleList;
+    }
 
+    public void setRoleList(List<Role> roleList) {
+        this.roleList = roleList;
+    }
 
     public String getCreatetime() {
         return createtime;

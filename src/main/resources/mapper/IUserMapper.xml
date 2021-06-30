@@ -11,6 +11,28 @@
         <result property="account" column="account"/>
         <result property="passwd" column="password"/>
     </resultMap>
+
+
+    <resultMap id="UserDutyMap" type="com.hyouka.entity.User">
+        <result column="userid" property="id" />
+        <result column="name" property="name" />
+        <result column="age" property="age" />
+        <result column="sex" property="sex" />
+        <result column="account" property="account" />
+        <result column="password" property="passwd" />
+        <result column="createtime" property="createtime" />
+
+        <!--        <association property="duty" javaType="com.hyouka.entity.Role">-->
+        <!--            <result column="did" property="id" />-->
+        <!--            <result column="name" property="name" />-->
+        <!--        </association>-->
+
+        <collection property="roleList" ofType="com.hyouka.entity.Role">
+            <result column="roleid" property="id"/>
+            <result column="rolename" property="name"/>
+        </collection>
+
+    </resultMap>
     <select id="getUserById" parameterType="int" resultType="com.hyouka.entity.User">
         SELECT *
         FROM user
@@ -20,6 +42,14 @@
     <select id="getAllUser" resultMap="UserMap">
         select *
         from user
+    </select>
+
+    <select id="getUserDuty" resultMap="UserDutyMap">
+        select *,r.id roleid,u.id userid,r.name rolename
+        from USER u
+                 left join userrole ur on u.id = ur.userid
+                 left join role r on r.id = ur.roleid
+
     </select>
 
 

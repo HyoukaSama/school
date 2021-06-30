@@ -1,10 +1,8 @@
 package com.hyouka.service.impl;
 
-
 import com.hyouka.dao.IUserDao;
 import com.hyouka.entity.User;
 import com.hyouka.service.IUserService;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,7 +10,6 @@ import java.util.List;
 
 @Service
 public class UserServiceImpl extends BaseServiceImpl<User> implements IUserService {
-
     @Autowired
     private IUserDao iUserDao;
 
@@ -21,4 +18,8 @@ public class UserServiceImpl extends BaseServiceImpl<User> implements IUserServi
         return iUserDao.getAllUser();
     }
 
+    @Override
+    public List<User> getUserDuty() {
+        return iUserDao.getUserDuty();
+    }
 }

@@ -4,9 +4,7 @@ import com.hyouka.entity.User;
 import com.hyouka.service.IUserService;
 import com.hyouka.service.impl.JedisClientPool;
 import net.sf.json.JSONArray;
-import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -30,7 +28,7 @@ public class UserController {
     @RequestMapping(value = "/getAllUser", method = RequestMethod.GET, produces = "application/json;charset=UTF-8")
     public String getAllUser() {
         List<User> userList = iUserService.getAllUser();
-        System.out.println("---------------");
+//        System.out.println("---------------");
         return JSONArray.fromObject(userList).toString();
     }
 
@@ -39,7 +37,7 @@ public class UserController {
     public String selectAll() {
 
         List<User> userList = iUserService.selectAll();
-        System.out.println("---------------");
+//        System.out.println("---------------");
         return JSONArray.fromObject(userList).toString();
     }
 
