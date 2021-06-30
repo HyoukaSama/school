@@ -17,4 +17,6 @@ public interface BaseService<T> {
 
     int delete(T t);
 
+    int selectCount(T t);
+
 }

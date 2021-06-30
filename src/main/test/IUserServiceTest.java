@@ -1,4 +1,7 @@
 import com.hyouka.entity.User;
+import com.hyouka.entity.UserRole;
+import com.hyouka.service.IRoleService;
+import com.hyouka.service.IUserRoleService;
 import com.hyouka.service.IUserService;
 import com.hyouka.utils.DateUtil;
 import org.junit.Test;
@@ -9,6 +12,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import javax.management.relation.RoleList;
+import java.util.List;
 import java.util.Random;
 
 
@@ -19,6 +24,11 @@ public class IUserServiceTest {
 
     private static Logger logger = LoggerFactory.getLogger(IUserServiceTest.class);
 
+    @Autowired
+    private IRoleService iRoleService;
+
+    @Autowired
+    private IUserRoleService iUserRoleService;
 
     @Autowired
     private IUserService iUserService;
@@ -31,11 +41,11 @@ public class IUserServiceTest {
         user.setId("1");
         // System.out.println(user.toString());
 
-        System.out.println(iUserService.getAllUser());
+        //  System.out.println(iUserService.getAllUser());
         System.out.println("-------------");
-        System.out.println(iUserService.select(user));
+        //   System.out.println(iUserService.select(user));
         System.out.println("-------------");
-//        System.out.println(iUserService.selectAll());
+        System.out.println(iUserService.selectAll());
 
 /*
         for (int i = 0; i < 10; i++) {
@@ -84,5 +94,25 @@ public class IUserServiceTest {
         System.out.println(iUserService.getUserDuty());
     }
 
+
+    @Test
+    public void TestUserAddRoles() {
+        List<User> userList = iUserService.getAllUser();
+        for (int i = 0; i < userList.size(); i++) {
+            User user = userList.get(i);
+            String userid = user.getId();
+
+            UserRole userRole = new UserRole();
+            userRole.setUserid(userid);
+            userRole.setRoleid("c52a100fd3044de1a2085a2ecd6c6c9b");
+
+            int size = iUserRoleService.selectCount(userRole);
+            if (size == 0) {
+                iUserRoleService.insert(userRole);
+            }else {
+                System.out.println("已存在");
+            }
+        }
+    }
 
 }

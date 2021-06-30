@@ -49,4 +49,9 @@ public class BaseServiceImpl<T> implements BaseService<T> {
     public int delete(T t) {
         return mapper.delete(t);
     }
+
+    @Override
+    public int selectCount(T t) {
+        return mapper.selectCount(t);
+    }
 }

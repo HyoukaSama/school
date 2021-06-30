@@ -14,7 +14,7 @@
 
 
     <resultMap id="UserDutyMap" type="com.hyouka.entity.User">
-        <result column="userid" property="id" />
+        <result column="id" property="id" />
         <result column="name" property="name" />
         <result column="age" property="age" />
         <result column="sex" property="sex" />
@@ -45,7 +45,7 @@
     </select>
 
     <select id="getUserDuty" resultMap="UserDutyMap">
-        select *,r.id roleid,u.id userid,r.name rolename
+        select u.*,r.id roleid,r.name rolename
         from USER u
                  left join userrole ur on u.id = ur.userid
                  left join role r on r.id = ur.roleid
