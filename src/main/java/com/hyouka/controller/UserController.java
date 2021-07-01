@@ -6,10 +6,7 @@ import com.hyouka.service.impl.JedisClientPool;
 import net.sf.json.JSONArray;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -68,8 +65,9 @@ public class UserController {
 
     @ResponseBody
     @RequestMapping(value = "/update" ,method = RequestMethod.POST,produces = "application/json;charset=UTF-8")
-    public  String updateUserById(@RequestParam User user){
-       return updateUserById(user);
+    public  String updateUserById(@RequestBody User user){
+
+       return iUserService.updateById(user)==1?"修改成功":"修改失败";
     }
 
 }

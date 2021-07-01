@@ -14,21 +14,22 @@
 
 
     <resultMap id="UserDutyMap" type="com.hyouka.entity.User">
-        <result property="userId" column="id"/>
-        <result property="name" column="name"/>
-        <result property="age" column="age"/>
-        <result property="sex" column="sex"/>
-        <result property="account" column="account"/>
-        <result property="passwd" column="password"/>
+        <result column="id" property="id" />
+        <result column="name" property="name" />
+        <result column="age" property="age" />
+        <result column="sex" property="sex" />
+        <result column="account" property="account" />
+        <result column="password" property="passwd" />
+        <result column="createtime" property="createtime" />
 
         <!--        <association property="duty" javaType="com.hyouka.entity.Role">-->
         <!--            <result column="did" property="id" />-->
         <!--            <result column="name" property="name" />-->
         <!--        </association>-->
 
-        <collection property="rolelist" ofType="com.hyouka.entity.Role">
-            <result column="roleId" property="id"/>
-            <result column="name" property="name"/>
+        <collection property="roleList" ofType="com.hyouka.entity.Role">
+            <result column="roleid" property="id"/>
+            <result column="rolename" property="name"/>
         </collection>
 
     </resultMap>
@@ -44,9 +45,11 @@
     </select>
 
     <select id="getUserDuty" resultMap="UserDutyMap">
-        select *
-        from user u,role r ,userrole ur
-        where u.id=ur.userid and r.id=ur.roleid
+        select u.*,r.id roleid,r.name rolename
+        from USER u
+                 left join userrole ur on u.id = ur.userid
+                 left join role r on r.id = ur.roleid
+
     </select>
 
 
